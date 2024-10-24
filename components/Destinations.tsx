@@ -1,37 +1,38 @@
 "use client";
+import { useState } from "react";
+import Modal from "./Modal"; 
 import DestinationCard from "./DestinationCard";
 import { destinations } from "@/constants";
 import SearchFilter from "./SearchFilter";
-import { useState } from "react";
 
 const Destinations = () => {
   const [allDestinations] = useState(destinations);
   const [filteredDestinations, setFilteredDestinations] =
     useState(allDestinations);
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [selectedDestination, setSelectedDestination] = useState(null);
 
   const handleSearch = (query: string) => {
-    console.log("Query:", query);
-
     if (query === "") {
       setFilteredDestinations(allDestinations);
       return;
     }
 
-    const results = allDestinations.filter((dest) => {
-      const destName = dest.name;
-      console.log("Destination Name:", destName);
-
-      return (
-        destName &&
-        typeof destName === "string" &&
-        destName.trim() !== "" &&
-        destName.toLowerCase().includes(query.toLowerCase())
-      );
-    });
-
-    console.log("Filtered Results:", results);
+    const results = allDestinations.filter((dest) =>
+      dest.name.toLowerCase().includes(query.toLowerCase())
+    );
 
     setFilteredDestinations(results);
+  };
+
+  const handleCardClick = (destination) => {
+    setSelectedDestination(destination); 
+    setIsModalOpen(true); 
+  };
+
+  const closeModal = () => {
+    setIsModalOpen(false); 
+    setSelectedDestination(null); 
   };
 
   return (
@@ -39,11 +40,6 @@ const Destinations = () => {
       <h2 className="destinations__title text-3xl font-bold text-center text-gray-800 mb-6">
         Découvrez votre prochaine aventure !
       </h2>
-      <p className="text-center text-lg text-gray-600 mb-8">
-        Explorez des destinations à couper le souffle et créez des souvenirs
-        inoubliables. Votre voyage de rêve vous attend !
-      </p>
-
       <SearchFilter onSearch={handleSearch} />
 
       <div className="flex flex-wrap justify-center gap-6">
@@ -53,18 +49,21 @@ const Destinations = () => {
           </p>
         ) : (
           filteredDestinations.map((destination) => (
-            <div
+            <DestinationCard
               key={destination.name}
-              className="w-64 bg-white shadow-lg rounded-lg overflow-hidden transition-transform transform hover:scale-105"
-            >
-              <DestinationCard
-                destination={destination.name}
-                imageUrl={destination.imageUrl}
-              />
-            </div>
+              destination={destination.name}
+              imageUrl={destination.imageUrl}
+              onClick={() => handleCardClick(destination)} 
+            />
           ))
         )}
       </div>
+
+      <Modal
+        isOpen={isModalOpen}
+        onClose={closeModal}
+        destination={selectedDestination}
+      />
     </section>
   );
 };

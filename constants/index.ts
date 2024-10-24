@@ -1,15 +1,95 @@
 // constants/index.ts
 export const destinations = [
-  { name: "Paris", imageUrl: "/hero.png" },
-  { name: "New York", imageUrl: "/hero.png" },
-  { name: "Tokyo", imageUrl: "/hero.png" },
-  { name: "Rome", imageUrl: "/hero.png" },
-  { name: "Bangkok", imageUrl: "/hero.png" },
-  { name: "Kuala lumpur", imageUrl: "/hero.png" },
-  { name: "Casablanca", imageUrl: "/hero.png" },
-  { name: "Tiruana", imageUrl: "/hero.png" },
-  { name: "Dubaï", imageUrl: "/hero.png" },
-  { name: "Los Angeles", imageUrl: "/hero.png" },
+  {
+    name: "Paris",
+    imageUrl: "/images/paris.jpg",
+    prices: {
+      flight: 250,
+      flightAndHotel: 600,
+      flightHotelActivity: 850,
+    },
+  },
+  {
+    name: "New York",
+    imageUrl: "/images/ny.jpg",
+    prices: {
+      flight: 400,
+      flightAndHotel: 800,
+      flightHotelActivity: 1100,
+    },
+  },
+  {
+    name: "Tokyo",
+    imageUrl: "/images/tokyo.jpg",
+    prices: {
+      flight: 600,
+      flightAndHotel: 1000,
+      flightHotelActivity: 1300,
+    },
+  },
+  {
+    name: "Rome",
+    imageUrl: "/images/rome.png",
+    prices: {
+      flight: 200,
+      flightAndHotel: 500,
+      flightHotelActivity: 750,
+    },
+  },
+  {
+    name: "Bangkok",
+    imageUrl: "/images/bk.jpg",
+    prices: {
+      flight: 700,
+      flightAndHotel: 900,
+      flightHotelActivity: 1200,
+    },
+  },
+  {
+    name: "Kuala Lumpur",
+    imageUrl: "/images/kl.jpg",
+    prices: {
+      flight: 650,
+      flightAndHotel: 850,
+      flightHotelActivity: 1100,
+    },
+  },
+  {
+    name: "Casablanca",
+    imageUrl: "/images/casablanca.jpg",
+    prices: {
+      flight: 300,
+      flightAndHotel: 500,
+      flightHotelActivity: 700,
+    },
+  },
+  {
+    name: "Tirana",
+    imageUrl: "/images/tirana.jpg",
+    prices: {
+      flight: 250,
+      flightAndHotel: 400,
+      flightHotelActivity: 600,
+    },
+  },
+  {
+    name: "Dubaï",
+    imageUrl: "/images/dubai.jpg",
+    prices: {
+      flight: 500,
+      flightAndHotel: 800,
+      flightHotelActivity: 1100,
+    },
+  },
+  {
+    name: "Los Angeles",
+    imageUrl: "/images/la.jpg",
+    prices: {
+      flight: 550,
+      flightAndHotel: 900,
+      flightHotelActivity: 1300,
+    },
+  },
 ];
 
 export const footerLinks = [
@@ -19,7 +99,7 @@ export const footerLinks = [
       { title: "How it works", url: "/" },
       { title: "Featured", url: "/" },
       { title: "Partnership", url: "/" },
-      { title: "Bussiness Relation", url: "/" },
+      { title: "Business Relation", url: "/" },
     ],
   },
   {
