@@ -4,31 +4,40 @@ import { useState } from "react";
 import { Combobox } from "@headlessui/react";
 import { destinations } from "@/constants";
 
-const SearchFilter = ({ onSearch }) => {
-  const [query, setQuery] = useState("");
+const SearchFilter = ({ onSearch }: { onSearch: (value: string) => void }) => {
+  const [query, setQuery] = useState<string>("");
+
   const filteredDestinations =
     query === ""
       ? destinations
-      : destinations.filter((destination) =>
-          destination.name.toLowerCase().includes(query.toLowerCase())
-        );
+      : destinations.filter((destination) => {
+          const name = destination.name ?? "";
+          return name.toLowerCase().includes(query.toLowerCase());
+        });
 
   return (
     <div className="mb-6">
       <Combobox
-        onChange={onSearch}
+        onChange={(value: string) => {
+          onSearch(value);
+          setQuery(value);
+        }}
         as="div"
         className="relative w-full max-w-md mx-auto"
       >
         <Combobox.Input
           className="border border-gray-300 rounded-lg py-2 px-4 w-full"
-          placeholder="Search for a destination..."
-          onChange={(event) => setQuery(event.target.value)}
+          placeholder="Rechercher une destination..."
+          onChange={(event) => {
+            const value = event.target.value;
+            setQuery(value);
+            onSearch(value);
+          }}
         />
         <Combobox.Options className="absolute z-10 mt-1 w-full bg-white border border-gray-300 rounded-lg shadow-lg max-h-60 overflow-auto">
           {filteredDestinations.length === 0 && query !== "" ? (
             <Combobox.Option value={query} disabled>
-              Nothing found.
+              Rien trouvé.
             </Combobox.Option>
           ) : (
             filteredDestinations.map((destination) => (

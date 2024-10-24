@@ -1,4 +1,3 @@
-// DestinationCard.tsx
 import Image from "next/image";
 
 interface DestinationCardProps {
