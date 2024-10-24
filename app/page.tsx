@@ -1,12 +1,11 @@
-// Page principale (par exemple, Home.tsx)
-import { Hero, Destinations, Footer, Navbar } from "@/components"; // Assure-toi d'importer Destinations
+import { Hero, Destinations, Footer, Navbar } from "@/components";
 
 const Home = () => {
   return (
     <div>
       <Navbar />
       <Hero />
-      <Destinations /> {/* Ajouter le composant Destinations ici */}
+      <Destinations />
       <Footer />
     </div>
   );

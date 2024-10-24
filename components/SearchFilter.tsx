@@ -1,9 +1,8 @@
-// SearchFilter.tsx
 "use client";
 
 import { useState } from "react";
 import { Combobox } from "@headlessui/react";
-import { destinations } from "@/constants"; // Assure-toi que tu as la liste des destinations
+import { destinations } from "@/constants";
 
 const SearchFilter = ({ onSearch }) => {
   const [query, setQuery] = useState("");
@@ -19,10 +18,10 @@ const SearchFilter = ({ onSearch }) => {
       <Combobox
         onChange={onSearch}
         as="div"
-        className="relative w-full max-w-md mx-auto" // Ajouté max-w-md et mx-auto pour centrer
+        className="relative w-full max-w-md mx-auto"
       >
         <Combobox.Input
-          className="border border-gray-300 rounded-lg py-2 px-4 w-full" // Garder la largeur pleine
+          className="border border-gray-300 rounded-lg py-2 px-4 w-full"
           placeholder="Search for a destination..."
           onChange={(event) => setQuery(event.target.value)}
         />

@@ -1,7 +1,7 @@
 "use client";
-import DestinationCard from "./DestinationCard"; // On importera le composant pour afficher une destination
-import { destinations } from "@/constants"; // On importe la liste des destinations
-import SearchFilter from "./SearchFilter"; // N'oublie pas d'importer le composant SearchFilter
+import DestinationCard from "./DestinationCard";
+import { destinations } from "@/constants";
+import SearchFilter from "./SearchFilter";
 import { useState } from "react";
 
 const Destinations = () => {
