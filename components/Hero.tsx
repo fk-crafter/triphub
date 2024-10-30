@@ -19,7 +19,7 @@ const Hero = () => {
   };
 
   return (
-    <div className="relative h-screen flex items-center justify-between bg-white container mx-auto px-10">
+    <div className="relative h-screen flex items-center justify-between container mx-auto px-10">
       <div className="w-1/2 z-20">
         <div className="flex items-center mt-24 mb-6">
           {[...Array(5)].map((_, index) => (

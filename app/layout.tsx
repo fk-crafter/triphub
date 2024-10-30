@@ -18,7 +18,7 @@ export const metadata: Metadata = {
   title: "Trip Hub",
   description: "Discover the best places in the world with Trip hub",
   icons: {
-    icon: [{ url: "/logo.png", sizes: "48x48", type: "image/png" }],
+    icon: [{ url: "/logo.png", sizes: "32x32", type: "image/png" }],
   },
 };
 

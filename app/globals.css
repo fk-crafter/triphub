@@ -11,6 +11,14 @@
   font-family: "Manrope", sans-serif;
 }
 
+body {
+  background: radial-gradient(
+    ellipse 80% 80% at 50% -20%,
+    rgba(120, 119, 198, 0.3),
+    rgba(255, 255, 255, 0)
+  );
+}
+
 /* START: General styles */
 .max-width {
   @apply max-w-[1440px] mx-auto;
