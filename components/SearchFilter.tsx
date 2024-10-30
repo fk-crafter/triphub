@@ -17,7 +17,7 @@ const SearchFilter = ({ onSearch }: { onSearch: (value: string) => void }) => {
         });
 
   return (
-    <div className="mb-6 relative w-full max-w-md mx-auto">
+    <div className="mb-6 relative w-full max-w-xs md:max-w-md mx-auto px-4">
       <Combobox
         onChange={(value: string) => {
           onSearch(value);

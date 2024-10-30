@@ -1,5 +1,7 @@
+"use client";
+
 import { motion } from "framer-motion";
-import { FaInfoCircle } from "react-icons/fa";
+import { FaInfoCircle, FaTimes } from "react-icons/fa";
 import Image from "next/image";
 import { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
@@ -60,6 +62,14 @@ const Modal = ({ isOpen, onClose, destination }: ModalProps) => {
         exit={{ scale: 0 }}
         onClick={(e) => e.stopPropagation()}
       >
+        <button
+          onClick={onClose}
+          className="absolute top-4 right-4 text-gray-500 hover:text-gray-700"
+          aria-label="Close"
+        >
+          <FaTimes size={20} />
+        </button>
+
         <h2 className="text-xl font-bold mb-4">{destination.name}</h2>
         <Image
           src={destination.imageUrl}
@@ -119,12 +129,6 @@ const Modal = ({ isOpen, onClose, destination }: ModalProps) => {
             ))}
           </tbody>
         </table>
-        <button
-          onClick={onClose}
-          className="mt-4 bg-red-400 text-white rounded-md px-4 py-2"
-        >
-          Close
-        </button>
       </motion.div>
     </motion.div>
   );
