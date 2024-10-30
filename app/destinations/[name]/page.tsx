@@ -7,8 +7,18 @@ import Image from "next/image";
 const DestinationDetails = ({ params }: { params: { name: string } }) => {
   const { name } = params;
 
+  const slug = name
+    .toLowerCase()
+    .replace(/-/g, " ")
+    .normalize("NFD")
+    .replace(/[\u0300-\u036f]/g, "");
+
   const destination = destinations.find(
-    (dest) => dest.name.toLowerCase() === name.toLowerCase()
+    (dest) =>
+      dest.name
+        .toLowerCase()
+        .normalize("NFD")
+        .replace(/[\u0300-\u036f]/g, "") === slug
   );
 
   if (!destination) {

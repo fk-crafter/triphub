@@ -1,5 +1,3 @@
-// constants/index.ts
-
 export const LogosCarouselData = [
   { name: "Air France", src: "/images/airfrance.png" },
   { name: "Japan Air", src: "/images/japanair.png" },
@@ -83,7 +81,7 @@ export const destinations = [
     },
   },
   {
-    name: "Dubaï",
+    name: "Dubai",
     imageUrl: "/images/dubai.jpg",
     prices: {
       flight: 500,

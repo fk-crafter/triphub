@@ -23,7 +23,10 @@ const Modal = ({ isOpen, onClose, destination }: ModalProps) => {
   const router = useRouter();
 
   const handleActivityClick = () => {
-    window.open(`/destinations/${destination.name}`, "_blank");
+    const destinationSlug = encodeURIComponent(
+      destination.name.toLowerCase().replace(/ /g, "-")
+    );
+    window.open(`/destinations/${destinationSlug}`, "_blank");
   };
 
   useEffect(() => {
