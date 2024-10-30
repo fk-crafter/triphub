@@ -5,6 +5,7 @@ import Image from "next/image";
 import CustomButton from "./CustomButton";
 import { useState, useRef, useEffect } from "react";
 import { FaBars, FaTimes } from "react-icons/fa";
+import { motion, AnimatePresence } from "framer-motion";
 
 const Navbar = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
@@ -54,18 +55,31 @@ const Navbar = () => {
           />
         </div>
 
-        {isMobileMenuOpen && (
-          <div
-            ref={menuRef}
-            className="absolute top-16 left-0 w-full bg-white shadow-md py-4 flex flex-col items-center space-y-4 md:hidden"
-          >
-            <CustomButton
-              title="Sign in"
-              btnType="button"
-              containerStyles="border rounded-full px-3 py-1 text-white transition duration-300 bg-black text-xs"
-            />
-          </div>
-        )}
+        <AnimatePresence>
+          {isMobileMenuOpen && (
+            <motion.div
+              ref={menuRef}
+              initial={{ opacity: 0, y: -10 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -10 }}
+              transition={{ duration: 0.3 }}
+              className="absolute top-0 left-0 w-full h-full bg-white shadow-md py-4 flex flex-col items-center space-y-4 md:hidden"
+            >
+              <button
+                onClick={toggleMobileMenu}
+                className="absolute top-4 right-4 text-black text-2xl"
+              >
+                <FaTimes />
+              </button>
+
+              <CustomButton
+                title="Sign in"
+                btnType="button"
+                containerStyles="border rounded-full px-3 py-1 text-white transition duration-300 bg-black text-xs mt-10"
+              />
+            </motion.div>
+          )}
+        </AnimatePresence>
       </nav>
     </header>
   );
