@@ -9,7 +9,7 @@ import { useRouter } from "next/navigation";
 interface ModalProps {
   isOpen: boolean;
   onClose: () => void;
-  destination: {
+  destination?: {
     name: string;
     imageUrl: string;
     prices: {
@@ -17,7 +17,7 @@ interface ModalProps {
       flightAndHotel: number;
       flightHotelActivity: number;
     };
-  };
+  } | null;
 }
 
 const Modal = ({ isOpen, onClose, destination }: ModalProps) => {
@@ -25,6 +25,7 @@ const Modal = ({ isOpen, onClose, destination }: ModalProps) => {
   const router = useRouter();
 
   const handleActivityClick = () => {
+    if (!destination) return;
     const destinationSlug = encodeURIComponent(
       destination.name.toLowerCase().replace(/ /g, "-")
     );
@@ -45,7 +46,7 @@ const Modal = ({ isOpen, onClose, destination }: ModalProps) => {
     return () => window.removeEventListener("keydown", handleKeyDown);
   }, [isOpen, onClose]);
 
-  if (!isOpen) return null;
+  if (!isOpen || !destination) return null;
 
   return (
     <motion.div

@@ -4,13 +4,15 @@ import Modal from "./Modal";
 import DestinationCard from "./DestinationCard";
 import { destinations } from "@/constants";
 import SearchFilter from "./SearchFilter";
+import { Destination } from "@/types"; // Import de l'interface Destination
 
 const Destinations = () => {
-  const [allDestinations] = useState(destinations);
+  const [allDestinations] = useState<Destination[]>(destinations);
   const [filteredDestinations, setFilteredDestinations] =
     useState(allDestinations);
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const [selectedDestination, setSelectedDestination] = useState(null);
+  const [selectedDestination, setSelectedDestination] =
+    useState<Destination | null>(null);
 
   const handleSearch = (query: string) => {
     if (query === "") {
@@ -25,7 +27,7 @@ const Destinations = () => {
     setFilteredDestinations(results);
   };
 
-  const handleCardClick = (destination) => {
+  const handleCardClick = (destination: Destination) => {
     setSelectedDestination(destination);
     setIsModalOpen(true);
   };

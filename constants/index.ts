@@ -1,3 +1,5 @@
+import { Destination } from "@/types";
+
 export const LogosCarouselData = [
   { name: "Air France", src: "/images/airfrance.png" },
   { name: "Japan Air", src: "/images/japanair.png" },
@@ -7,7 +9,7 @@ export const LogosCarouselData = [
   { name: "Thai Air", src: "/images/thaiair.png" },
 ];
 
-export const destinations = [
+export const destinations: Destination[] = [
   {
     name: "Paris",
     imageUrl: "/images/paris.jpg",
