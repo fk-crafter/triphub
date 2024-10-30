@@ -5,7 +5,7 @@ import { LogosCarouselData } from "@/constants";
 
 export default function LogosCarousel() {
   return (
-    <div className="mt-20">
+    <div className="mt-5">
       <div className="inline-flex w-full items-center justify-center">
         <motion.hr
           initial={{ translateX: "-50%", opacity: 0 }}
