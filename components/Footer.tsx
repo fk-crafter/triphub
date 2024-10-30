@@ -5,7 +5,6 @@ import { footerLinks } from "@/constants";
 const Footer = () => (
   <footer className="flex flex-col text-gray-700 mt-5 border-t border-gray-200">
     <div className="flex flex-wrap justify-between gap-10 sm:px-16 px-6 py-10">
-      {/* Logo et description */}
       <div className="flex flex-col items-start gap-4 w-full sm:w-auto">
         <Image
           src="/logo.png"
@@ -21,7 +20,6 @@ const Footer = () => (
         <p className="text-sm">&copy; 2024 TripHub. All rights reserved.</p>
       </div>
 
-      {/* Liens du footer */}
       <div className="flex flex-wrap gap-10 w-full sm:w-auto">
         {footerLinks.map((item) => (
           <div key={item.title} className="flex flex-col gap-4">
@@ -42,7 +40,6 @@ const Footer = () => (
         ))}
       </div>
 
-      {/* Section newsletter */}
       <div className="flex flex-col gap-4 w-full sm:w-auto">
         <h3 className="text-sm font-semibold">Stay up to date</h3>
         <p className="text-sm text-gray-500">
@@ -61,7 +58,6 @@ const Footer = () => (
       </div>
     </div>
 
-    {/* Bas de page */}
     <div className="flex justify-between items-center flex-wrap border-t border-gray-200 sm:px-16 px-6 py-4">
       <p className="text-xs text-gray-500">
         &copy; 2024 TripHub. All rights reserved.

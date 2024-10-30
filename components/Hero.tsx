@@ -26,7 +26,7 @@ const Hero = () => {
             <FaStar
               key={index}
               size={24}
-              color={index < 4 ? "#FFD700" : "#FFD700"} // Gold color for filled stars
+              color={index < 4 ? "#FFD700" : "#FFD700"}
             />
           ))}
           <span className="text-gray-800 text-lg ml-2">4.8</span>
