@@ -11,6 +11,8 @@ export const destinations = [
   {
     name: "Paris",
     imageUrl: "/images/paris.jpg",
+    description:
+      "Explore the beautiful city of Paris with its rich history, cult",
     prices: {
       flight: 250,
       flightAndHotel: 600,
