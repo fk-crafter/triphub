@@ -8,16 +8,15 @@ import { FaBars, FaTimes } from "react-icons/fa";
 
 const Navbar = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-  const menuRef = useRef(null);
+  const menuRef = useRef<HTMLDivElement | null>(null);
 
   const toggleMobileMenu = () => {
     setIsMobileMenuOpen(!isMobileMenuOpen);
   };
 
-  // Ferme le menu lorsque l'utilisateur clique en dehors
   useEffect(() => {
-    const handleClickOutside = (event) => {
-      if (menuRef.current && !menuRef.current.contains(event.target)) {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (menuRef.current && !menuRef.current.contains(event.target as Node)) {
         setIsMobileMenuOpen(false);
       }
     };
@@ -31,7 +30,6 @@ const Navbar = () => {
   return (
     <header className="w-full absolute z-10">
       <nav className="max-w-[1440px] mx-auto flex justify-between items-center px-4 md:px-10 py-4">
-        {/* Logo avec ajustement pour mobile */}
         <Link href="/" className="flex justify-center items-center">
           <Image
             src="/logo.png"
@@ -42,14 +40,12 @@ const Navbar = () => {
           />
         </Link>
 
-        {/* Bouton Hamburger pour mobile */}
         <div className="md:hidden flex items-center">
           <button onClick={toggleMobileMenu} className="text-black text-2xl">
             {isMobileMenuOpen ? <FaTimes /> : <FaBars />}
           </button>
         </div>
 
-        {/* Menu principal (visible uniquement sur écrans moyens et plus) */}
         <div className="hidden md:flex items-center">
           <CustomButton
             title="Sign in"
@@ -58,7 +54,6 @@ const Navbar = () => {
           />
         </div>
 
-        {/* Menu mobile (visible uniquement si `isMobileMenuOpen` est vrai) */}
         {isMobileMenuOpen && (
           <div
             ref={menuRef}
