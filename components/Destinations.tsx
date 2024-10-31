@@ -5,7 +5,7 @@ import Modal from "./Modal";
 import DestinationCard from "./DestinationCard";
 import { destinations } from "@/constants";
 import SearchFilter from "./SearchFilter";
-import { Destination } from "@/types"; // Import de l'interface Destination
+import { Destination } from "@/types";
 
 const Destinations = () => {
   const [allDestinations] = useState<Destination[]>(destinations);
@@ -15,15 +15,14 @@ const Destinations = () => {
   const [selectedDestination, setSelectedDestination] =
     useState<Destination | null>(null);
 
-  // Nouvel état pour gérer l'index du carrousel
   const [carouselIndex, setCarouselIndex] = useState(0);
-  const [direction, setDirection] = useState(0); // 1 pour Next, -1 pour Previous
+  const [direction, setDirection] = useState(0);
   const destinationsPerPage = 8;
 
   const handleSearch = (query: string) => {
     if (query === "") {
       setFilteredDestinations(allDestinations);
-      setCarouselIndex(0); // Reset l'index du carrousel après une recherche
+      setCarouselIndex(0);
       return;
     }
 
@@ -45,13 +44,11 @@ const Destinations = () => {
     setSelectedDestination(null);
   };
 
-  // Calcul des destinations affichées en fonction de l'index actuel du carrousel
   const displayedDestinations = filteredDestinations.slice(
     carouselIndex * destinationsPerPage,
     carouselIndex * destinationsPerPage + destinationsPerPage
   );
 
-  // Gestion du bouton "Précédent"
   const handlePrev = () => {
     if (carouselIndex > 0) {
       setDirection(-1);
@@ -59,7 +56,6 @@ const Destinations = () => {
     }
   };
 
-  // Gestion du bouton "Suivant"
   const handleNext = () => {
     if (
       (carouselIndex + 1) * destinationsPerPage <
@@ -70,10 +66,9 @@ const Destinations = () => {
     }
   };
 
-  // Variants pour l'animation subtile de slide
   const subtleSlideVariants = {
     hidden: (direction: number) => ({
-      x: direction > 0 ? 50 : -50, // Légère translation horizontale
+      x: direction > 0 ? 50 : -50,
       opacity: 0,
     }),
     visible: {
@@ -93,7 +88,6 @@ const Destinations = () => {
       </h2>
       <SearchFilter onSearch={handleSearch} />
 
-      {/* Animation de transition des destinations */}
       <div className="relative flex justify-center overflow-hidden w-full">
         <AnimatePresence custom={direction} mode="wait">
           <motion.div
@@ -104,7 +98,7 @@ const Destinations = () => {
             animate="visible"
             exit="exit"
             custom={direction}
-            transition={{ duration: 0.3, ease: "easeOut" }} // Transition rapide
+            transition={{ duration: 0.3, ease: "easeOut" }}
           >
             {displayedDestinations.length === 0 ? (
               <p className="text-center text-gray-600">No destination found.</p>
@@ -123,7 +117,6 @@ const Destinations = () => {
         </AnimatePresence>
       </div>
 
-      {/* Boutons de navigation du carrousel */}
       <div className="flex justify-center gap-4 mt-8">
         <button
           onClick={handlePrev}
