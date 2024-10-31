@@ -16,8 +16,10 @@ const Destinations = () => {
     useState<Destination | null>(null);
 
   const [carouselIndex, setCarouselIndex] = useState(0);
-  const [direction, setDirection] = useState(0);
   const destinationsPerPage = 8;
+
+  const sectionRef = useRef(null);
+  const isInView = useInView(sectionRef, { once: true, margin: "-100px 0px" });
 
   const handleSearch = (query: string) => {
     if (query === "") {
@@ -51,7 +53,6 @@ const Destinations = () => {
 
   const handlePrev = () => {
     if (carouselIndex > 0) {
-      setDirection(-1);
       setCarouselIndex(carouselIndex - 1);
     }
   };
@@ -61,35 +62,20 @@ const Destinations = () => {
       (carouselIndex + 1) * destinationsPerPage <
       filteredDestinations.length
     ) {
-      setDirection(1);
       setCarouselIndex(carouselIndex + 1);
     }
   };
 
-  const subtleSlideVariants = {
-    hidden: (direction: number) => ({
-      x: direction > 0 ? 50 : -50,
-      opacity: 0,
-    }),
-    visible: {
-      x: 0,
-      opacity: 1,
-    },
-    exit: (direction: number) => ({
-      x: direction < 0 ? 50 : -50,
-      opacity: 0,
-    }),
+  // Variants pour animer chaque carte
+  const cardVariants = {
+    hidden: { opacity: 0, y: 20 },
+    visible: { opacity: 1, y: 0 },
   };
 
-  // Référence et détection de l'entrée en vue
-  const titleRef = useRef(null);
-  const isInView = useInView(titleRef, { once: true });
-
   return (
-    <section className="destinations py-12 bg-gray-50">
+    <section ref={sectionRef} className="destinations py-12 bg-gray-50">
       {/* Animation d'apparition pour le titre */}
       <motion.h2
-        ref={titleRef}
         initial={{ opacity: 0, y: 20 }}
         animate={isInView ? { opacity: 1, y: 0 } : {}}
         transition={{ duration: 0.6, ease: "easeOut" }}
@@ -101,31 +87,36 @@ const Destinations = () => {
       <SearchFilter onSearch={handleSearch} />
 
       <div className="relative flex justify-center overflow-hidden w-full">
-        <AnimatePresence custom={direction} mode="wait">
-          <motion.div
+        <AnimatePresence>
+          <div
             key={carouselIndex}
             className="flex flex-wrap justify-center gap-6 w-full"
-            variants={subtleSlideVariants}
-            initial="hidden"
-            animate="visible"
-            exit="exit"
-            custom={direction}
-            transition={{ duration: 0.3, ease: "easeOut" }}
           >
             {displayedDestinations.length === 0 ? (
               <p className="text-center text-gray-600">No destination found.</p>
             ) : (
-              displayedDestinations.map((destination) => (
-                <DestinationCard
+              displayedDestinations.map((destination, index) => (
+                <motion.div
                   key={destination.name}
-                  destination={destination.name}
-                  imageUrl={destination.imageUrl}
-                  prices={destination.prices}
-                  onClick={() => handleCardClick(destination)}
-                />
+                  variants={cardVariants}
+                  initial="hidden"
+                  animate={isInView ? "visible" : "hidden"}
+                  transition={{
+                    duration: 0.3,
+                    ease: "easeOut",
+                    delay: index * 0.1,
+                  }}
+                >
+                  <DestinationCard
+                    destination={destination.name}
+                    imageUrl={destination.imageUrl}
+                    prices={destination.prices}
+                    onClick={() => handleCardClick(destination)}
+                  />
+                </motion.div>
               ))
             )}
-          </motion.div>
+          </div>
         </AnimatePresence>
       </div>
 
