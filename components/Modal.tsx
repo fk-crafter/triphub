@@ -117,7 +117,7 @@ const Modal = ({ isOpen, onClose, destination }: ModalProps) => {
                         : undefined
                     }
                   >
-                    <FaInfoCircle className="text-blue-400 cursor-pointer" />
+                    <FaInfoCircle className="text-red-400 cursor-pointer" />
                     {tooltip === option.info && (
                       <div className="absolute top-6 left-0 bg-gray-700 text-white text-sm p-2 rounded-md shadow-lg w-max z-10">
                         {tooltip}
