@@ -5,7 +5,6 @@ import Image from "next/image";
 import { FaStar } from "react-icons/fa";
 
 const Hero = () => {
-  // Variants d'animation pour l'image (arrivée par la droite)
   const imageVariants = {
     hidden: { opacity: 0, x: 100 },
     visible: {
@@ -20,7 +19,6 @@ const Hero = () => {
     },
   };
 
-  // Variants d'animation pour le texte et les étoiles (arrivée par la gauche)
   const textVariants = {
     hidden: { opacity: 0, x: -100 },
     visible: {
@@ -32,7 +30,6 @@ const Hero = () => {
 
   return (
     <div className="relative h-screen flex flex-col-reverse md:flex-row items-center justify-between container mx-auto px-6 md:px-10">
-      {/* Section Texte */}
       <motion.div
         className="w-full md:w-1/2 z-20 text-center md:text-left mt-6 md:mt-0"
         initial="hidden"
@@ -69,7 +66,6 @@ const Hero = () => {
         </motion.button>
       </motion.div>
 
-      {/* Section Image */}
       <motion.div
         className="w-full md:w-1/2 relative z-10 flex justify-center items-center h-48 md:h-auto pointer-events-none mt-[9rem] md:mt-0"
         initial="hidden"
