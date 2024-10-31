@@ -66,7 +66,6 @@ const Destinations = () => {
     }
   };
 
-  // Variants pour animer chaque carte
   const cardVariants = {
     hidden: { opacity: 0, y: 20 },
     visible: { opacity: 1, y: 0 },
@@ -74,7 +73,6 @@ const Destinations = () => {
 
   return (
     <section ref={sectionRef} className="destinations py-12 bg-gray-50">
-      {/* Animation d'apparition pour le titre */}
       <motion.h2
         initial={{ opacity: 0, y: 20 }}
         animate={isInView ? { opacity: 1, y: 0 } : {}}
@@ -120,7 +118,7 @@ const Destinations = () => {
         </AnimatePresence>
       </div>
 
-      <div className="flex justify-center gap-4 mt-8">
+      <div className="flex justify-center gap-4 mt-8 ml-[-1.8rem]">
         <button
           onClick={handlePrev}
           disabled={carouselIndex === 0}

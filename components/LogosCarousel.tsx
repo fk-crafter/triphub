@@ -100,3 +100,5 @@ export default function LogosCarousel() {
     </div>
   );
 }
+
+// avant changement
