@@ -102,6 +102,78 @@ export const destinations: Destination[] = [
       flightHotelActivity: 1300,
     },
   },
+  {
+    name: "Sydney",
+    imageUrl: "/images/sydney.jpg",
+    prices: {
+      flight: 600,
+      flightAndHotel: 950,
+      flightHotelActivity: 1200,
+    },
+  },
+  {
+    name: "Rio de Janeiro",
+    imageUrl: "/images/rio.jpg",
+    prices: {
+      flight: 700,
+      flightAndHotel: 1000,
+      flightHotelActivity: 1400,
+    },
+  },
+  {
+    name: "Cape Town",
+    imageUrl: "/images/capetown.jpg",
+    prices: {
+      flight: 500,
+      flightAndHotel: 850,
+      flightHotelActivity: 1200,
+    },
+  },
+  {
+    name: "Hong Kong",
+    imageUrl: "/images/hk.jpg",
+    prices: {
+      flight: 550,
+      flightAndHotel: 800,
+      flightHotelActivity: 1100,
+    },
+  },
+  {
+    name: "London",
+    imageUrl: "/images/london.jpg",
+    prices: {
+      flight: 300,
+      flightAndHotel: 700,
+      flightHotelActivity: 900,
+    },
+  },
+  {
+    name: "Barcelona",
+    imageUrl: "/images/barcelona.jpg",
+    prices: {
+      flight: 350,
+      flightAndHotel: 750,
+      flightHotelActivity: 950,
+    },
+  },
+  {
+    name: "Istanbul",
+    imageUrl: "/images/istanbul.jpg",
+    prices: {
+      flight: 400,
+      flightAndHotel: 800,
+      flightHotelActivity: 1100,
+    },
+  },
+  {
+    name: "Moscow",
+    imageUrl: "/images/moscow.jpg",
+    prices: {
+      flight: 500,
+      flightAndHotel: 850,
+      flightHotelActivity: 1150,
+    },
+  },
 ];
 
 export const footerLinks = [
