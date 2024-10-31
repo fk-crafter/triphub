@@ -1,9 +1,36 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useRef, useEffect } from "react";
 import { Combobox } from "@headlessui/react";
 import { destinations } from "@/constants";
 import { MagnifyingGlassIcon } from "@heroicons/react/24/solid";
+import { motion } from "framer-motion";
+
+function useInView(ref: React.RefObject<Element>) {
+  const [isInView, setIsInView] = useState(false);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            setIsInView(true);
+            observer.disconnect();
+          }
+        });
+      },
+      { threshold: 0.2 }
+    );
+
+    if (ref.current) {
+      observer.observe(ref.current);
+    }
+
+    return () => observer.disconnect();
+  }, [ref]);
+
+  return isInView;
+}
 
 const SearchFilter = ({ onSearch }: { onSearch: (value: string) => void }) => {
   const [query, setQuery] = useState<string>("");
@@ -16,8 +43,17 @@ const SearchFilter = ({ onSearch }: { onSearch: (value: string) => void }) => {
           return name.toLowerCase().includes(query.toLowerCase());
         });
 
+  const ref = useRef(null);
+  const isInView = useInView(ref);
+
   return (
-    <div className="mb-6 relative w-full max-w-xs md:max-w-md mx-auto px-4">
+    <motion.div
+      ref={ref}
+      initial={{ opacity: 0, y: 20 }}
+      animate={isInView ? { opacity: 1, y: 0 } : {}}
+      transition={{ duration: 0.6, ease: "easeOut" }}
+      className="mb-6 relative w-full max-w-xs md:max-w-md mx-auto px-4"
+    >
       <Combobox
         onChange={(value: string) => {
           onSearch(value);
@@ -61,7 +97,7 @@ const SearchFilter = ({ onSearch }: { onSearch: (value: string) => void }) => {
           )}
         </Combobox.Options>
       </Combobox>
-    </div>
+    </motion.div>
   );
 };
 

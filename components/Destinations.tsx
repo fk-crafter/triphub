@@ -1,6 +1,6 @@
 "use client";
-import { useState } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import { useState, useRef } from "react";
+import { motion, AnimatePresence, useInView } from "framer-motion";
 import Modal from "./Modal";
 import DestinationCard from "./DestinationCard";
 import { destinations } from "@/constants";
@@ -81,11 +81,23 @@ const Destinations = () => {
     }),
   };
 
+  // Référence et détection de l'entrée en vue
+  const titleRef = useRef(null);
+  const isInView = useInView(titleRef, { once: true });
+
   return (
     <section className="destinations py-12 bg-gray-50">
-      <h2 className="destinations__title text-3xl font-bold text-center text-gray-800 mb-6">
+      {/* Animation d'apparition pour le titre */}
+      <motion.h2
+        ref={titleRef}
+        initial={{ opacity: 0, y: 20 }}
+        animate={isInView ? { opacity: 1, y: 0 } : {}}
+        transition={{ duration: 0.6, ease: "easeOut" }}
+        className="destinations__title text-3xl font-bold text-center text-gray-800 mb-6"
+      >
         Discover your next adventure!
-      </h2>
+      </motion.h2>
+
       <SearchFilter onSearch={handleSearch} />
 
       <div className="relative flex justify-center overflow-hidden w-full">
