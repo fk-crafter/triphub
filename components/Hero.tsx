@@ -70,12 +70,10 @@ const Hero = () => {
         className="w-full md:w-1/2 relative z-10 flex justify-center items-center h-48 md:h-auto pointer-events-none mt-[9rem] md:mt-0"
         initial="hidden"
         animate="visible"
+        whileHover="hover"
         variants={imageVariants}
       >
-        <motion.div
-          className="relative w-[80vw] h-[50vw] md:w-[30vw] md:h-[20vw] pointer-events-auto overflow-hidden"
-          whileHover="hover"
-        >
+        <motion.div className="relative w-[80vw] h-[50vw] md:w-[30vw] md:h-[20vw] pointer-events-auto overflow-hidden">
           <Image
             src="/hero.png"
             alt="hero"
