@@ -28,8 +28,19 @@ const Navbar = () => {
     };
   }, []);
 
+  const navbarVariants = {
+    hidden: { opacity: 0, y: -20 },
+    visible: { opacity: 1, y: 0 },
+  };
+
   return (
-    <header className="w-full absolute z-10">
+    <motion.header
+      className="w-full absolute z-10"
+      initial="hidden"
+      animate="visible"
+      variants={navbarVariants}
+      transition={{ duration: 0.6, ease: "easeOut" }}
+    >
       <nav className="max-w-[1440px] mx-auto flex justify-between items-center px-4 md:px-10 py-4">
         <Link href="/" className="flex justify-center items-center">
           <Image
@@ -81,7 +92,7 @@ const Navbar = () => {
           )}
         </AnimatePresence>
       </nav>
-    </header>
+    </motion.header>
   );
 };
 
