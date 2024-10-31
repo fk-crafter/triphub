@@ -53,9 +53,11 @@ const Navbar = () => {
         </Link>
 
         <div className="md:hidden flex items-center">
-          <button onClick={toggleMobileMenu} className="text-black text-2xl">
-            {isMobileMenuOpen ? <FaTimes /> : <FaBars />}
-          </button>
+          {!isMobileMenuOpen && (
+            <button onClick={toggleMobileMenu} className="text-black text-2xl">
+              <FaBars />
+            </button>
+          )}
         </div>
 
         <div className="hidden md:flex items-center">
