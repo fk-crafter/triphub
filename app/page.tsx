@@ -1,5 +1,4 @@
 import { Hero, Destinations, Navbar, LogosCarousel } from "@/components";
-import { destinations } from "@/constants";
 
 const Home = () => {
   return (

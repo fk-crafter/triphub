@@ -7,6 +7,7 @@ import { motion } from "framer-motion";
 
 const DestinationDetails = ({ params }: { params: { name: string } }) => {
   const { name } = params;
+  const router = useRouter();
 
   const slug = name
     .toLowerCase()
@@ -65,7 +66,7 @@ const DestinationDetails = ({ params }: { params: { name: string } }) => {
 
         <div className="flex justify-center">
           <motion.button
-            onClick={() => window.history.back()}
+            onClick={() => router.back()}
             className="bg-red-400 text-white rounded-full px-4 md:px-6 py-2 md:py-3 hover:shadow-lg"
             whileHover={{ scale: 1.1 }}
           >
