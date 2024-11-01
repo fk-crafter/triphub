@@ -23,12 +23,13 @@ export interface DestinationPrices {
 export interface Destination {
   name: string;
   imageUrl: string;
-  description?: string; // Rendre cette propriété optionnelle
+  description?: string;
   prices: {
     flight: number;
     flightAndHotel: number;
     flightHotelActivity: number;
   };
+  coordinates?: [number, number];
 }
 
 export interface DestinationDetails {
