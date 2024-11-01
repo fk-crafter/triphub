@@ -29,7 +29,6 @@ export interface Destination {
     flightAndHotel: number;
     flightHotelActivity: number;
   };
-  coordinates?: [number, number];
 }
 
 export interface DestinationDetails {
