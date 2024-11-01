@@ -2,7 +2,6 @@
 
 import { destinations } from "@/constants";
 import Image from "next/image";
-import { useRouter } from "next/navigation";
 import { motion } from "framer-motion";
 
 const DestinationDetails = ({ params }: { params: { name: string } }) => {
@@ -29,7 +28,13 @@ const DestinationDetails = ({ params }: { params: { name: string } }) => {
   }
 
   return (
-    <div className="container mx-auto p-6 max-w-4xl">
+    <motion.div
+      className="container mx-auto p-6 max-w-4xl"
+      initial={{ opacity: 0, y: 20 }}
+      animate={{ opacity: 1, y: 0 }}
+      exit={{ opacity: 0, y: 20 }}
+      transition={{ duration: 0.5, ease: "easeOut" }}
+    >
       <div className="bg-white shadow-lg rounded-lg p-6 mt-32">
         <div className="flex items-center mb-6 space-x-3">
           <h1 className="text-4xl font-bold text-gray-800">
@@ -73,7 +78,7 @@ const DestinationDetails = ({ params }: { params: { name: string } }) => {
           </motion.button>
         </div>
       </div>
-    </div>
+    </motion.div>
   );
 };
 
